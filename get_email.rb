@@ -1,16 +1,20 @@
-puts "here"
+puts "hello world!"
 
+require 'watir'
 
+username = "user"
+password = "pass"
+user = "u"
 
-Cross-platform solution:
-First, install the Launchy gem:
+browser = Watir::Browser.new :chrome
+browser.goto "https://www.instagram.com/accounts/login/"
 
-$ gem install launchy
-Then, you can run this:
+puts "Logging in ..."
+browser.text_field(:name => "username").set "#{username}"
+browser.text_field(:name => "password").set "#{password}"
 
-require 'launchy'
+#browser.button(:text => 'Log in').click
+browser.button(:class => "_qv64e       _gexxb _4tgw8     _njrw0   ".split).click
+sleep(2)
 
-Launchy.open("http://stackoverflow.com")
-
-
-system("firefox http://www.google.com")
+browser.goto "instagram.com/#{user}/"
