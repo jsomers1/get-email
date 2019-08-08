@@ -1,9 +1,9 @@
 require 'selenium-webdriver'
 
-username = "a"
-password = ""
+username = 'user'
+password = 'pass'
 
-chromedriver_path = '/Users/jonahsomers/Desktop/chromedriver.exe'
+chromedriver_path = '/Users/myuser/Desktop/chromedriver.exe'
 Selenium::WebDriver::Chrome::Service.driver_path = chromedriver_path
 
 #Selenium::WebDriver::Chrome.path = chromedriver_path
