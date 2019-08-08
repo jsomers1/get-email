@@ -1,19 +1,23 @@
-require 'watir'
-#require 'webdrivers'
+require 'selenium-webdriver'
 
-username = ""
+username = "a"
 password = ""
-user = ""
 
-browser = Watir::Browser.new :chrome
-browser.goto "https://www.protonmail.com/login"
+chromedriver_path = '/Users/jonahsomers/Desktop/chromedriver.exe'
+Selenium::WebDriver::Chrome::Service.driver_path = chromedriver_path
 
-puts "Logging in ..."
-# browser.text_field(:id => "username").set "#{username}"
-# browser.text_field(:data-name => "password").set "#{password}"
+#Selenium::WebDriver::Chrome.path = chromedriver_path
+driver = Selenium::WebDriver.for :chrome
+driver.navigate.to 'https://mail.protonmail.com/login'
+puts driver.title
+puts 'Logging in ...'
 
-# #browser.button(:text => 'Log in').click
-# browser.button(:class => "_qv64e       _gexxb _4tgw8     _njrw0   ".split).click
-# sleep(2)
+element = driver.find_element(:name, 'username')
+element.send_keys username
+element.submit
 
-# browser.goto "instagram.com/#{user}/"
+element = driver.find_element(:name, 'password')
+element.send_keys password
+element.submit
+
+driver.quit
